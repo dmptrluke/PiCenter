@@ -13,7 +13,7 @@ from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.floatlayout import FloatLayout
 
 
-class MainLayout(FloatLayout):
+class Frame(FloatLayout):
     def update(self, *args):
         self.ids.status_time.text = strftime("%I:%M %p", localtime())
 
@@ -31,12 +31,12 @@ class PiCenterApp(App):
 
     def build(self):
         # set window size
-        Window.size = (800, 400)
+        Window.size = (800, 480)
 
         # initialise main panel and start updates
-        main_layout = MainLayout()
-        Clock.schedule_interval(main_layout.update, 1)
-        return main_layout
+        frame = Frame()
+        Clock.schedule_interval(frame.update, 1)
+        return frame
 
 if __name__ == '__main__':
     PiCenterApp().run()
