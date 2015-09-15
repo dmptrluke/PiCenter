@@ -1,4 +1,9 @@
 #:kivy 1.9
+<StatusText@Label>:
+    size_hint: None, None
+    text_size: self.size
+    halign: 'right'
+    size: 100, 25
 
 <MainLayout>
     TabbedPanel:
@@ -6,30 +11,19 @@
         pos_hint: {'center_x': .5, 'center_y': .5}
         do_default_tab: False
 
-
         StatusTab:
             id: tab_status
 
         WeatherTab:
             id: tab_weather
 
-
-    Label:
-        size_hint: None, None
+    StatusText:
         pos: root.width - 107, root.height - 22
-        text_size: self.size
-        halign: 'right'
-        size: 100, 25
         text: "Nexus"
         id: status_host
 
-    Label:
-        size_hint: None, None
+    StatusText:
         pos: root.width - 107, root.height - 42
-        text_size: self.size
-        halign: 'right'
-        size: 100, 25
-        text: "0:00 PM"
         id: status_time
 
 <StatusTab>:
@@ -43,4 +37,4 @@
         Label:
             text: 'Weather Tab'
         Button:
-            text: 'Button that does nothinggg'
+            text: 'Button that does nothing'
