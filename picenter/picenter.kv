@@ -1,26 +1,45 @@
-#:kivy 1.0.9
+#:kivy 1.9
 
-<MainPanel>:
-    do_default_tab: False
-    size_hint: 1,1
-    pos_hint: {'center_x': .5, 'center_y': .5}
+<MainLayout>
+    TabbedPanel:
+        size_hint: 1, 1
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        do_default_tab: False
 
-    StatusTab:
-        text: 'Status'
-        id: tab_status
 
-    WeatherTab:
-        text: 'Weather'
-        id: tab_weather
+        StatusTab:
+            id: tab_status
 
+        WeatherTab:
+            id: tab_weather
+
+
+    Label:
+        size_hint: None, None
+        pos: root.width - 107, root.height - 22
+        text_size: self.size
+        halign: 'right'
+        size: 100, 25
+        text: "Nexus"
+        id: status_host
+
+    Label:
+        size_hint: None, None
+        pos: root.width - 107, root.height - 42
+        text_size: self.size
+        halign: 'right'
+        size: 100, 25
+        text: "0:00 PM"
+        id: status_time
 
 <StatusTab>:
+    text: 'Status'
     Label:
         text: 'st'
 
 <WeatherTab>:
+    text: 'Weather'
     BoxLayout:
-        size_hint: 1,1
         Label:
             text: 'Weather Tab'
         Button:
