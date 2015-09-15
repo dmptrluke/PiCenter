@@ -1,0 +1,27 @@
+#:kivy 1.0.9
+
+<MainPanel>:
+    do_default_tab: False
+    size_hint: 1,1
+    pos_hint: {'center_x': .5, 'center_y': .5}
+
+    StatusTab:
+        text: 'Status'
+        id: tab_status
+
+    WeatherTab:
+        text: 'Weather'
+        id: tab_weather
+
+
+<StatusTab>:
+    Label:
+        text: 'st'
+
+<WeatherTab>:
+    BoxLayout:
+        size_hint: 1,1
+        Label:
+            text: 'Weather Tab'
+        Button:
+            text: 'Button that does nothinggg'
