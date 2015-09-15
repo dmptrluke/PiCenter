@@ -1,5 +1,6 @@
 # generic imports
 from time import localtime, strftime
+from socket import gethostname
 
 # set config before importing
 from kivy.config import Config
@@ -14,6 +15,13 @@ from kivy.uix.floatlayout import FloatLayout
 
 
 class Frame(FloatLayout):
+    def __init__(self, **kwargs):
+        # initialise widget
+        super().__init__(**kwargs)
+
+        # set dynamic variables
+        self.ids.status_host.text = gethostname()
+
     def update(self, *args):
         self.ids.status_time.text = strftime("%I:%M %p", localtime())
 
@@ -34,9 +42,10 @@ class PiCenterApp(App):
         Window.size = (800, 480)
 
         # initialise main panel and start updates
-        frame = Frame()
-        Clock.schedule_interval(frame.update, 1)
-        return frame
+        picenter = Frame()
+
+        Clock.schedule_interval(picenter.update, 1)
+        return picenter
 
 if __name__ == '__main__':
     PiCenterApp().run()
