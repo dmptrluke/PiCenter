@@ -22,6 +22,9 @@ class Frame(FloatLayout):
         # set dynamic variables
         self.ids.status_host.text = gethostname()
 
+        # initial update
+        self.update()
+
     def update(self, *args):
         self.ids.status_time.text = strftime("%I:%M %p", localtime())
 
