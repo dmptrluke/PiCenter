@@ -1,6 +1,7 @@
 # generic imports
 from time import localtime, strftime
 from socket import gethostname
+import json
 
 # set config before importing
 from kivy.config import Config
@@ -11,11 +12,11 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
-from kivy.storage.jsonstore import JsonStore
+from kivy.uix.button import Button
 
 # picenter imports
-from picenter.tabs.status import StatusTab
-from picenter.tabs.outside import OutsideTab
+from picenter.tabs.status import *
+from picenter.tabs.outside import *
 
 
 class MainFrame(FloatLayout):
@@ -38,13 +39,18 @@ class PiCenterApp(App):
     title = 'PiCenter'
 
     def build(self):
-        # set window size
         Window.size = (800, 480)
+        return MainFrame()
 
-        # initialise main panel and start updates
-        application = MainFrame()
+    def build_config(self, config):
+        config.setdefaults('section1', {
+            'key1': 'value1',
+            'key2': '42'
+        })
 
-        return application
+    def build_settings(self, settings):
+        with open('config_template.json') as template:
+            settings.add_json_panel('PiCenter', self.config, data=template.read())
 
 if __name__ == '__main__':
     PiCenterApp().run()

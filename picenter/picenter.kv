@@ -18,12 +18,19 @@
             id: tab_outside
 
     StatusText:
-        pos: root.width - 107, root.height - 22
+        pos: root.width - 147, root.height - 22
         id: status_host
 
     StatusText:
-        pos: root.width - 107, root.height - 42
+        pos: root.width - 147, root.height - 42
         id: status_time
+
+    Button:
+        on_press: app.open_settings()
+        size_hint: None, None
+        size: 40, 40
+        pos: root.width - 43, root.height - 44
+
 
 <StatusTab>:
     text: 'Status'
