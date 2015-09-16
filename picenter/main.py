@@ -11,18 +11,21 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
+from kivy.storage.jsonstore import JsonStore
 
 # picenter imports
 from picenter.tabs.status import StatusTab
 from picenter.tabs.outside import OutsideTab
 
-class Frame(FloatLayout):
+
+class MainFrame(FloatLayout):
     def __init__(self, **kwargs):
         # initialise widget
         super().__init__(**kwargs)
 
         # set dynamic variables
         self.ids.status_host.text = gethostname()
+        Clock.schedule_interval(self.update, 1)
 
         # initial update
         self.update()
@@ -39,9 +42,8 @@ class PiCenterApp(App):
         Window.size = (800, 480)
 
         # initialise main panel and start updates
-        application = Frame()
+        application = MainFrame()
 
-        Clock.schedule_interval(application.update, 1)
         return application
 
 if __name__ == '__main__':

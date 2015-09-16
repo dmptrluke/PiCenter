@@ -2,4 +2,6 @@ from kivy.uix.tabbedpanel import TabbedPanelItem
 
 
 class StatusTab(TabbedPanelItem):
-    pass
+    def __init__(self, **kwargs):
+        # initialise widget
+        super().__init__(**kwargs)
