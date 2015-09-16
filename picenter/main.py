@@ -10,8 +10,11 @@ Config.set('graphics', 'resizable', 0)
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
-from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.floatlayout import FloatLayout
+
+# picenter imports
+from picenter.panels.outside import OutsideTab
+from picenter.panels.status import StatusTab
 
 
 class Frame(FloatLayout):
@@ -29,14 +32,6 @@ class Frame(FloatLayout):
         self.ids.status_time.text = strftime("%I:%M %p", localtime())
 
 
-class StatusTab(TabbedPanelItem):
-    pass
-
-
-class WeatherTab(TabbedPanelItem):
-    pass
-
-
 class PiCenterApp(App):
     title = 'PiCenter'
 
@@ -45,10 +40,10 @@ class PiCenterApp(App):
         Window.size = (800, 480)
 
         # initialise main panel and start updates
-        picenter = Frame()
+        application = Frame()
 
-        Clock.schedule_interval(picenter.update, 1)
-        return picenter
+        Clock.schedule_interval(application.update, 1)
+        return application
 
 if __name__ == '__main__':
     PiCenterApp().run()
