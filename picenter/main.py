@@ -13,9 +13,8 @@ from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 
 # picenter imports
-from picenter.panels.outside import OutsideTab
-from picenter.panels.status import StatusTab
-
+from picenter.tabs.status import StatusTab
+from picenter.tabs.outside import OutsideTab
 
 class Frame(FloatLayout):
     def __init__(self, **kwargs):
