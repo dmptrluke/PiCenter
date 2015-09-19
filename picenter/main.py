@@ -15,8 +15,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 
 # picenter imports
-from picenter.tabs.status import *
-from picenter.tabs.outside import *
+from tabs.status import *
+from tabs.outside import *
 
 
 class MainFrame(FloatLayout):
