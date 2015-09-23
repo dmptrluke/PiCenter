@@ -39,8 +39,20 @@
 
 <OutsideTab>:
     text: 'Outside'
-    BoxLayout:
-        Label:
-            text: 'Weather Tab'
+    FloatLayout:
         Button:
-            text: 'Button that does nothing'
+            size_hint: None, None
+            size: 200, 200
+            pos_hint: {"x": 0.03, 'top': 0.95}
+            text: 'Weather Icon Here'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 200, 100
+            pos_hint: {"x": 0.03, 'top': 0.47}
+            Label:
+                text: 'Kivy Layouts'
+            Label:
+                text: 'Are Just'
+            Label:
+                text: 'Really Odd'
