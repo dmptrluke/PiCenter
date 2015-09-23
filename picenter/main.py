@@ -12,6 +12,7 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.settings import SettingsWithSidebar
 from kivy.uix.button import Button
 
 # picenter imports
@@ -40,17 +41,23 @@ class PiCenterApp(App):
 
     def build(self):
         Window.size = (800, 480)
+        self.settings_cls = SettingsWithSidebar
         return MainFrame()
 
     def build_config(self, config):
-        config.setdefaults('section1', {
+        config.setdefaults('basic', {
             'key1': 'value1',
             'key2': '42'
         })
+        config.setdefaults('apikeys', {
+            'wunderground': ' '
+        })
 
     def build_settings(self, settings):
-        with open('config_template.json') as template:
-            settings.add_json_panel('PiCenter', self.config, data=template.read())
+        with open('./resources/settings_basic.json') as template:
+            settings.add_json_panel('Basic', self.config, data=template.read())
+        with open('./resources/settings_apikey.json') as template:
+            settings.add_json_panel('API Keys', self.config, data=template.read())
 
 if __name__ == '__main__':
     PiCenterApp().run()

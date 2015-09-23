@@ -1,0 +1,7 @@
+[
+    { "type": "string",
+      "title": "Weather Underground",
+      "desc": "Weather Underground API Key",
+      "section": "apikeys",
+      "key": "wunderground" }
+]

@@ -102,3 +102,4 @@ $RECYCLE.BIN/
 
 # Pycharm
 .idea/
+*.ini
